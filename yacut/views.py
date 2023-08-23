@@ -28,7 +28,7 @@ def index_view():
     if form.validate_on_submit():
         if form.custom_id.data:
             if not is_short_id_unique(form.custom_id.data):
-                flash('Такая короткая ссылка уже занята')
+                flash(f'Имя {form.custom_id.data} уже занято!')
                 return render_template('index.html', form=form)
             short_id = form.custom_id.data
         else:

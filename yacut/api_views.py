@@ -25,10 +25,11 @@ def add_url_map():
     custom_id = data.get('custom_id')
     if url is None:
         raise InvalidAPIUsage('\"url\" является обязательным полем!')
-    elif custom_id is None:
+    elif custom_id is None or custom_id == '':
         data['custom_id'] = get_unique_short_id()
-    elif (not is_short_id_unique(custom_id) or
-          not re.match(r'^[a-zA-Z0-9]{1,16}$', custom_id) or
+    elif not is_short_id_unique(custom_id):
+        raise InvalidAPIUsage(f'Имя \"{custom_id}\" уже занято.')
+    elif (not re.match(r'^[a-zA-Z0-9]{1,16}$', custom_id) or
           len(custom_id) < 1 or len(custom_id) > 16):
         raise InvalidAPIUsage('Указано недопустимое имя для короткой ссылки')
     url_map = URLMap(original=url, short=data.get('custom_id'))
