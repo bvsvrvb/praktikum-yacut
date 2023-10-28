@@ -32,11 +32,11 @@
 Клонировать репозиторий и перейти в директорию проекта:
 
 ```bash
-git clone https://github.com/bvsvrvb/yacut.git
+git clone https://github.com/bvsvrvb/praktikum-yacut.git
 ```
 
 ```bash
-cd yacut
+cd praktikum-yacut
 ```
 
 Создать `.env` файл с переменными окружения:
